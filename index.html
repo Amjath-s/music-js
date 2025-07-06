@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+/>
+</head>
+<body>
+    
+    <div class="app-container">    
+        <aside class="sidebar">
+            <h2>Music PlayList</h2>
+          <div class="songListDisplay">
+            <ul id="songListDisplayul"></ul>    
+          </div>
+        </aside>
+        <main class="main-content">
+          <!-- Player or song details go here -->
+           <div class="music-player" id="musicPlayer">
+            <div class="music-image" id="musicimage">
+            
+            </div>
+            <div class="musicdetail" id="musicDetails">
+            </div>
+            <div class="musicbuttons">
+                <button class="icon-button" id="prev"><i class="fa-solid fa-backward"></i></button>
+                    
+                <button id ="playbutton" class="icon-button">
+                 
+                    <i class="fa-solid fa-play" id="play-pause"></i>
+                   
+                </button>
+                <button class="icon-button"  id="next"><i class="fa-solid fa-forward"></i></button>
+            </div>
+        </main>
+      </div>
+</body>
+<script src="./index.js">    </script>
+</html>
