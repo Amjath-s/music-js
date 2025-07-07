@@ -16,14 +16,18 @@ async function fetchSong()
     if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
     }
+
     songList = await response.json();
-    console.log(songList); 
+    // playSong(songList[0]);
+    playSong(songList[0]);
+    icon.classList.remove("fa-pause");
+    icon.classList.add("fa-play"); 
     
     // newsongList = [...songList];
     console.log(songList);
     displaysong(songList);
 }
-
+// playSong(songList[0]); // Play the first song by default
 
 //Arrow function syntax
 const displaysong = (songList) => {
@@ -43,6 +47,8 @@ const displaysong = (songList) => {
         songItem.appendChild(songImage);
         songItem.addEventListener('click',(event)=>{
             event.preventDefault();
+          
+        
        
             playSong(song);            
         })
@@ -50,6 +56,7 @@ const displaysong = (songList) => {
     })  
 }
 const audio = new Audio();// Creating a new audio elemnt as global varibale for use any where int the code
+
 
 
 const playSong=(song)=>{
@@ -66,8 +73,17 @@ const playSong=(song)=>{
     songDetails.innerHTML = `<h3>${song.title}</h3><h3>${song.artist}</h3>`;
 
     audio.src = song.url; 
-       
-     index=songList.indexOf(song);//finding the index of the song in the songList array
+    
+
+     index=songList.indexOf(song);//finding the index of the song in the songList array// Reset icon to play state
+   
+        audio.play().catch((error) => {
+          console.error("Error playing the song:", error);
+        });
+        
+
+
+     
   
   
    
@@ -76,7 +92,7 @@ const playSong=(song)=>{
   
     audio.play( ).catch(error => {
         console.error('Error playing the song:', error);})
-   
+
     icon.classList.remove("fa-play");
     icon.classList.add("fa-pause"); 
    
@@ -153,6 +169,7 @@ btn.addEventListener("click", () => {
     icon.classList.add("fa-play");
   }
 });
+
 
 
 
