@@ -4,6 +4,12 @@ fetchSong();
 let songList = [];
 let index = 0; // Initialize index to keep track of the current song
 // let newsongList = [];
+const toggleBtn = document.getElementById("sidebarToggle");
+const sidebar = document.querySelector(".sidebar");
+
+toggleBtn.addEventListener("click", () => {
+  sidebar.classList.toggle("active");
+});
 async function fetchSong()
 {
     const response=await fetch('./song.json')
@@ -80,7 +86,25 @@ const btn = document.getElementById("playbutton");
 const icon = document.getElementById("play-pause");
 const nextBtn = document.getElementById("next");
 const prevBtn = document.getElementById("prev");
+const progressBar = document.getElementById("progressBar");
+const durationSpan = document.getElementById("durationSpan");
+const currentTimeSpan = document.getElementById("currentTime");
 
+audio.addEventListener("loadedmetadata", () => {
+  durationSpan.innerText = formatTime(audio.duration);
+  progressBar.max = Math.floor(audio.duration);
+});
+
+audio.addEventListener("timeupdate", () => {
+  currentTimeSpan.innerText = formatTime(audio.currentTime);   
+progressBar.value = Math.floor(audio.currentTime);
+});
+
+progressBar.addEventListener("input",()=>{  
+    audio.currentTime=progressBar.value;
+
+
+})
 
 nextBtn.addEventListener("click", () => {
     console.log("Next button clicked");
@@ -133,3 +157,8 @@ btn.addEventListener("click", () => {
 
 
 
+function formatTime(seconds) {
+  const min = Math.floor(seconds / 60);
+  const sec = Math.floor(seconds % 60);
+  return `${min}:${sec < 10 ? "0" : ""}${sec}`;
+}

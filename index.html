@@ -11,6 +11,10 @@
 />
 </head>
 <body>
+  <button id="sidebarToggle" class="hamburger">
+    <i class="fa fa-bars"></i>
+  </button>
+  
     
     <div class="app-container">    
         <aside class="sidebar">
@@ -22,7 +26,8 @@
         <main class="main-content">
           <!-- Player or song details go here -->
            <div class="music-player" id="musicPlayer">
-            <div class="music-image" id="musicimage">
+            <!-- /*show the image*/ -->
+            <div class="music-image" id="musicimage"> 
             
             </div>
             <div class="musicdetail" id="musicDetails">
@@ -33,9 +38,14 @@
                 <button id ="playbutton" class="icon-button">
                  
                     <i class="fa-solid fa-play" id="play-pause"></i>
-                   
+            
                 </button>
                 <button class="icon-button"  id="next"><i class="fa-solid fa-forward"></i></button>
+            </div>
+            <div class="progress-container">
+              <span id="currentTime">0:00</span>
+              <input type="range" id="progressBar" value="0">
+              <span id="durationSpan">0:00</span>
             </div>
         </main>
       </div>
